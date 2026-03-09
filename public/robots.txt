@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /*
+Allow: /favicon.ico
+Disallow: /public/pic/*
+Disallow: /pic/*
+
+Sitemap: https://130th.skkudramaclub.kr/sitemap.xml

@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@font-face {
+    font-family: 'SebangGothic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SEBANG_Gothic_Regular.woff') format('woff');
+    font-weight: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SebangGothic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/SEBANG_Gothic_Bold.woff') format('woff');
+    font-weight: 700;
+    font-display: swap;
+}
+
+:root {
+  --noise-color: #000000;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'SebangGothic', 'Noto Sans KR', sans-serif;
+  background-color: #f0f0f0;
+  color: #111;
+  overflow-x: hidden;
+}
+
+.bg-grain::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.font-oswald {
+  font-family: 'Oswald', sans-serif;
+}
+
+.font-sebang {
+  font-family: 'SebangGothic', sans-serif;
+}
+
+/* 3D Book Styles */
+.perspective-2000 {
+  perspective: 2000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Book Page Animation */
+.book-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+  background-color: white;
+  box-shadow: inset 3px 0px 10px rgba(0,0,0,0.05);
+}
+
+.book-page.flipped {
+  transform: rotateY(-180deg);
+}
+
+/* Custom Scrollbar for history list */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 2px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+@keyframes page-turn-forward {
+  0% { transform: perspective(1500px) rotateY(0deg); }
+  100% { transform: perspective(1500px) rotateY(-180deg); }
+}
+
+@keyframes page-turn-backward {
+  0% { transform: perspective(1500px) rotateY(-180deg); }
+  100% { transform: perspective(1500px) rotateY(0deg); }
+}
+
+@keyframes magic-spread-on {
+  0% { clip-path: circle(0% at center); opacity: 1; }
+  100% { clip-path: circle(150% at center); opacity: 0; }
+}
+
+@keyframes magic-spread-off {
+  0% { clip-path: circle(0% at center); opacity: 1; }
+  100% { clip-path: circle(150% at center); opacity: 0; }
+}
+
+.animate-magic-on {
+  animation: magic-spread-on 1.5s ease-out forwards;
+}
+
+.animate-magic-off {
+  animation: magic-spread-off 1.5s ease-out forwards;
+}
