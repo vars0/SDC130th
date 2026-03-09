@@ -5,7 +5,6 @@ import { castHistory, memberPasswords } from '../data/parsedData';
 import { ref, onValue, runTransaction } from 'firebase/database';
 import { collection, addDoc, query, where, orderBy, onSnapshot, serverTimestamp } from 'firebase/firestore';
 import { db, firestore } from '../firebaseConfig';
-import jjw21Image from '../public/pic/JJW21.jpg';
 
 interface BookReaderProps {
   book: BookData;
@@ -416,7 +415,7 @@ export const BookReader: React.FC<BookReaderProps> = ({ book, initialRect, onClo
           >
              {book.imageUrl ? (
                <img 
-                 src={book.author === '정준원' && junwonPhotoSwapped ? jjw21Image : book.imageUrl} 
+                 src={book.author === '정준원' && junwonPhotoSwapped ? './pic/JJW21.jpg' : book.imageUrl} 
                  className={`w-full h-full object-cover object-top ${book.author === '정준원' || book.author === '엄현식' ? 'cursor-pointer' : ''}`} 
                  alt={book.author} 
                  referrerPolicy="no-referrer"

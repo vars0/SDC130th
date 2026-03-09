@@ -1,10 +1,7 @@
 import { AppData } from './types';
 
-const images: Record<string, string> = import.meta.glob('/public/pic/*.jpg', { eager: true, query: '?url', import: 'default' });
-
 const getImageUrl = (filename: string) => {
-  const path = `/public/pic/${filename}`;
-  return images[path] || `./pic/${filename}`;
+  return `./pic/${filename}`;
 };
 
 export const appData: AppData = {
