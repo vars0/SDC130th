@@ -392,7 +392,7 @@ export const BookReader: React.FC<BookReaderProps> = ({ book, initialRect, onClo
             {/* Crown Icon for everyone, swaps to Soju for Jung Woohyuk */}
             <div className="mb-4">
               {book.author === '정우혁' && isSoju ? (
-                <img src="/Drink.svg" className="w-20 h-20 animate-bounce object-contain" alt="Soju" />
+                <img src="./Drink.svg" className="w-20 h-20 animate-bounce object-contain" alt="Soju" />
               ) : (
                 <Crown className="w-12 h-12" />
               )}
@@ -415,7 +415,7 @@ export const BookReader: React.FC<BookReaderProps> = ({ book, initialRect, onClo
           >
              {book.imageUrl ? (
                <img 
-                 src={book.author === '정준원' && junwonPhotoSwapped ? '/pic/JJW21.jpg' : book.imageUrl} 
+                 src={book.author === '정준원' && junwonPhotoSwapped ? './pic/JJW21.jpg' : book.imageUrl} 
                  className={`w-full h-full object-cover object-top ${book.author === '정준원' || book.author === '엄현식' ? 'cursor-pointer' : ''}`} 
                  alt={book.author} 
                  onClick={(e) => {
@@ -522,7 +522,7 @@ export const BookReader: React.FC<BookReaderProps> = ({ book, initialRect, onClo
                 zIndex: 50
               }}
             >
-              <img src="/Cat.svg" className="w-12 h-12 object-contain" alt="Cat" />
+              <img src="./Cat.svg" className="w-12 h-12 object-contain" alt="Cat" />
             </div>
           ))}
 
@@ -533,7 +533,7 @@ export const BookReader: React.FC<BookReaderProps> = ({ book, initialRect, onClo
               className="group relative inline-flex items-center justify-center w-16 h-16 bg-white border-2 border-black rounded-full shadow-[4px_4px_0px_black] active:translate-y-1 active:shadow-none transition-all"
             >
               {book.author === '박자연' ? (
-                <img src="/3acorns.png" className="w-12 h-12 rounded-full object-cover" alt="Acorns" />
+                <img src="./3acorns.png" className="w-12 h-12 rounded-full object-cover" alt="Acorns" />
               ) : (
                 <Heart className="w-6 h-6 text-red-500 fill-current group-hover:scale-110 transition-transform" />
               )}
@@ -632,7 +632,7 @@ export const BookReader: React.FC<BookReaderProps> = ({ book, initialRect, onClo
       if (swipeUnlocked) {
         return (
           <div className="w-full h-full relative bg-[#faf8ef] overflow-hidden">
-            <iframe src="/Swipe.html" className="w-full h-full border-0" title="Swipe Game" />
+            <iframe src="./Swipe.html" className="w-full h-full border-0" title="Swipe Game" />
           </div>
         );
       }

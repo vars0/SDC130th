@@ -79,7 +79,7 @@ const MagicEffects = () => {
     <div className="fixed inset-0 z-[200] pointer-events-none flex items-center justify-center">
       {effect === 'sojuOn' && (
         <div className="absolute inset-0 bg-green-500/30 animate-magic-on flex items-center justify-center">
-          <img src="/Drink.svg" className="w-48 h-48 animate-bounce" alt="Soju" />
+          <img src="./Drink.svg" className="w-48 h-48 animate-bounce" alt="Soju" />
         </div>
       )}
       {effect === 'sojuOff' && (
