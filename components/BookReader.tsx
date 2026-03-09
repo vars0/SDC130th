@@ -5,6 +5,7 @@ import { castHistory, memberPasswords } from '../data/parsedData';
 import { ref, onValue, runTransaction } from 'firebase/database';
 import { collection, addDoc, query, where, orderBy, onSnapshot, serverTimestamp } from 'firebase/firestore';
 import { db, firestore } from '../firebaseConfig';
+import jjw21Image from '../public/pic/JJW21.jpg';
 
 interface BookReaderProps {
   book: BookData;
@@ -392,7 +393,7 @@ export const BookReader: React.FC<BookReaderProps> = ({ book, initialRect, onClo
             {/* Crown Icon for everyone, swaps to Soju for Jung Woohyuk */}
             <div className="mb-4">
               {book.author === '정우혁' && isSoju ? (
-                <img src="./Drink.svg" className="w-20 h-20 animate-bounce object-contain" alt="Soju" />
+                <img src="./Drink.svg" className="w-20 h-20 animate-bounce object-contain" alt="Soju" referrerPolicy="no-referrer" />
               ) : (
                 <Crown className="w-12 h-12" />
               )}
@@ -415,9 +416,10 @@ export const BookReader: React.FC<BookReaderProps> = ({ book, initialRect, onClo
           >
              {book.imageUrl ? (
                <img 
-                 src={book.author === '정준원' && junwonPhotoSwapped ? './pic/JJW21.jpg' : book.imageUrl} 
+                 src={book.author === '정준원' && junwonPhotoSwapped ? jjw21Image : book.imageUrl} 
                  className={`w-full h-full object-cover object-top ${book.author === '정준원' || book.author === '엄현식' ? 'cursor-pointer' : ''}`} 
                  alt={book.author} 
+                 referrerPolicy="no-referrer"
                  onClick={(e) => {
                    if (book.author === '정준원' && junwonHeartClicked) {
                      setJunwonPhotoSwapped(true);
@@ -522,7 +524,7 @@ export const BookReader: React.FC<BookReaderProps> = ({ book, initialRect, onClo
                 zIndex: 50
               }}
             >
-              <img src="./Cat.svg" className="w-12 h-12 object-contain" alt="Cat" />
+              <img src="./Cat.svg" className="w-12 h-12 object-contain" alt="Cat" referrerPolicy="no-referrer" />
             </div>
           ))}
 
@@ -533,7 +535,7 @@ export const BookReader: React.FC<BookReaderProps> = ({ book, initialRect, onClo
               className="group relative inline-flex items-center justify-center w-16 h-16 bg-white border-2 border-black rounded-full shadow-[4px_4px_0px_black] active:translate-y-1 active:shadow-none transition-all"
             >
               {book.author === '박자연' ? (
-                <img src="./3acorns.png" className="w-12 h-12 rounded-full object-cover" alt="Acorns" />
+                <img src="./3acorns.png" className="w-12 h-12 rounded-full object-cover" alt="Acorns" referrerPolicy="no-referrer" />
               ) : (
                 <Heart className="w-6 h-6 text-red-500 fill-current group-hover:scale-110 transition-transform" />
               )}

@@ -42,6 +42,7 @@ export const Bookshelf: React.FC<BookshelfProps> = ({ shelf }) => {
                 src={shelf.groupPhotoUrl} 
                 alt="Group Photo" 
                 className="w-full h-auto object-cover lg:grayscale lg:hover:grayscale-0 transition-all duration-700"
+                referrerPolicy="no-referrer"
               />
               <div className="mt-2 text-right">
                 <span className="font-oswald text-xs font-bold tracking-widest bg-black text-white px-2 py-1">CHARACTERS</span>
@@ -78,7 +79,7 @@ export const Bookshelf: React.FC<BookshelfProps> = ({ shelf }) => {
                    }`}>
                       {(shelf.id === 'section-director' || shelf.id === 'section-planning-leader') && book.imageUrl && (
                         <div className="w-[100px] md:w-[120px] aspect-[3/4] border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] overflow-hidden shrink-0 relative transition-transform group-hover:-translate-y-2">
-                           <img src={book.imageUrl} alt={book.author} className="w-full h-full object-cover object-top lg:grayscale lg:group-hover:grayscale-0 transition-all duration-500" />
+                           <img src={book.imageUrl} alt={book.author} className="w-full h-full object-cover object-top lg:grayscale lg:group-hover:grayscale-0 transition-all duration-500" referrerPolicy="no-referrer" />
                            <div className="absolute bottom-0 left-0 w-full bg-black text-white text-center text-[10px] md:text-xs py-1 font-sebang font-bold flex flex-col leading-tight">
                              <span className="text-[8px] md:text-[10px] text-neutral-300 font-normal">{book.author === '김동건' ? '연출' : book.author === '하선영' ? '조연출' : '기획팀장'}</span>
                              <span>{book.author}</span>

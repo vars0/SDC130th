@@ -15,6 +15,7 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ data }) => {
               src={data.imageUrl} 
               alt={data.characterRole} 
               className="w-full h-full object-cover object-top lg:grayscale transition-all duration-500 lg:group-hover:grayscale-0 group-hover:scale-105"
+              referrerPolicy="no-referrer"
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center bg-neutral-200">

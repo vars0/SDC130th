@@ -28,7 +28,7 @@ export const Book: React.FC<BookProps> = ({ book, defaultIcon }) => {
   const renderContent = () => {
     // 0. Soju Easter Egg
     if (isSoju) {
-       return <img src="./Drink.svg" className="w-8 h-8 mb-3 object-contain animate-bounce" alt="Soju" />;
+       return <img src="./Drink.svg" className="w-8 h-8 mb-3 object-contain animate-bounce" alt="Soju" referrerPolicy="no-referrer" />;
     }
 
     // 1. If it's a leader, show Crown

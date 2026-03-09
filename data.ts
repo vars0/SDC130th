@@ -1,5 +1,12 @@
 import { AppData } from './types';
 
+const images: Record<string, string> = import.meta.glob('/public/pic/*.jpg', { eager: true, query: '?url', import: 'default' });
+
+const getImageUrl = (filename: string) => {
+  const path = `/public/pic/${filename}`;
+  return images[path] || `./pic/${filename}`;
+};
+
 export const appData: AppData = {
   title: "회장님의 위인전",
   synopsis: "경영난을 겪고 있는 도서출판 말미잘에\n전화 한 통이 걸려온다.\n해삼그룹 장해삼 회장이 막대한 선금을\n약속하며 본인의 위인전을 만들어 달라는데...\n\n도저히 본받을 곳이라곤 없는 회장님의\n위인전, 과연 완성될 수 있을까..?",
@@ -29,15 +36,15 @@ export const appData: AppData = {
       id: "section-character",
       categoryEnglish: "Character",
       categoryKorean: "등장인물",
-      groupPhotoUrl: "pic/Cast.jpg",
+      groupPhotoUrl: getImageUrl("Cast.jpg"),
       books: [
-        { id: "Char_1", title: "스물한 살의 나에게", author: "정준원", color: "bg-white", characterRole: "사장", roleDescription: "도서출판 말미잘의 사장", imageUrl: "pic/Char_1.jpg", cohort: "61기", department: "영상", studentId: "20" },
-        { id: "Char_2", title: "말미잘에서 살아남기", author: "김희원", color: "bg-white", characterRole: "김지현", roleDescription: "말미잘 1호 사원이자 이사원과 함께 고참 멤버 중 하나", imageUrl: "pic/Char_2.jpg", cohort: "66기", department: "경제", studentId: "24" },
-        { id: "Char_3", title: "과잉 생각 방지 안내서 - 번뇌 탈출", author: "진태훈", color: "bg-white", characterRole: "이선호", roleDescription: "말미잘 2호 사원, 직책은 일단 디자이너이다", imageUrl: "pic/Char_3.jpg", cohort: "66기", department: "경영", studentId: "21" },
-        { id: "Char_4", title: "그럼에도 불구하고, ( )", author: "권민재", color: "bg-white", characterRole: "박수영", roleDescription: "몇년 만에 막내를 탈출했다 엉뚱하긴 해도 열정은 뒤지지 않는다", imageUrl: "pic/Char_4.jpg", cohort: "66기", department: "미컴", studentId: "25" },
-        { id: "Char_5", title: "집", author: "윤호준", color: "bg-white", characterRole: "송지석", roleDescription: "모든 세대가 읽는 책을 만들고 싶은 패기있는 신입", imageUrl: "pic/Char_5.jpg", cohort: "66기", department: "글경", studentId: "22" },
-        { id: "Char_6", title: "어쩌다 이렇게 됐지", author: "김성겸", color: "bg-white", characterRole: "장해삼", roleDescription: "굴지의 글로벌 기업 해삼그룹의 신화를 일군 장본인", imageUrl: "pic/Char_6.jpg", cohort: "65기", department: "신소재", studentId: "23" },
-        { id: "Char_7", title: "탈각", author: "이사라", color: "bg-white", characterRole: "강혜진", roleDescription: "해삼그룹 회장 부속실 소속 비서", imageUrl: "pic/Char_7.jpg", cohort: "66기", department: "미컴", studentId: "25" },
+        { id: "Char_1", title: "스물한 살의 나에게", author: "정준원", color: "bg-white", characterRole: "사장", roleDescription: "도서출판 말미잘의 사장", imageUrl: getImageUrl("Char_1.jpg"), cohort: "61기", department: "영상", studentId: "20" },
+        { id: "Char_2", title: "말미잘에서 살아남기", author: "김희원", color: "bg-white", characterRole: "김지현", roleDescription: "말미잘 1호 사원이자 이사원과 함께 고참 멤버 중 하나", imageUrl: getImageUrl("Char_2.jpg"), cohort: "66기", department: "경제", studentId: "24" },
+        { id: "Char_3", title: "과잉 생각 방지 안내서 - 번뇌 탈출", author: "진태훈", color: "bg-white", characterRole: "이선호", roleDescription: "말미잘 2호 사원, 직책은 일단 디자이너이다", imageUrl: getImageUrl("Char_3.jpg"), cohort: "66기", department: "경영", studentId: "21" },
+        { id: "Char_4", title: "그럼에도 불구하고, ( )", author: "권민재", color: "bg-white", characterRole: "박수영", roleDescription: "몇년 만에 막내를 탈출했다 엉뚱하긴 해도 열정은 뒤지지 않는다", imageUrl: getImageUrl("Char_4.jpg"), cohort: "66기", department: "미컴", studentId: "25" },
+        { id: "Char_5", title: "집", author: "윤호준", color: "bg-white", characterRole: "송지석", roleDescription: "모든 세대가 읽는 책을 만들고 싶은 패기있는 신입", imageUrl: getImageUrl("Char_5.jpg"), cohort: "66기", department: "글경", studentId: "22" },
+        { id: "Char_6", title: "어쩌다 이렇게 됐지", author: "김성겸", color: "bg-white", characterRole: "장해삼", roleDescription: "굴지의 글로벌 기업 해삼그룹의 신화를 일군 장본인", imageUrl: getImageUrl("Char_6.jpg"), cohort: "65기", department: "신소재", studentId: "23" },
+        { id: "Char_7", title: "탈각", author: "이사라", color: "bg-white", characterRole: "강혜진", roleDescription: "해삼그룹 회장 부속실 소속 비서", imageUrl: getImageUrl("Char_7.jpg"), cohort: "66기", department: "미컴", studentId: "25" },
       ]
     },
     {
@@ -56,8 +63,8 @@ export const appData: AppData = {
         }
       ],
       books: [
-        { id: "Dir_1", title: "제130회 대공연 프로그램북", author: "김동건", color: "bg-black", textColor: "text-white", isLeader: true, imageUrl: "pic/Dir_1.jpg", cohort: "61기", department: "소프트", studentId: "20" },
-        { id: "Dir_2", title: "그게 내가 되지 말란 법은 없잖아", author: "하선영", color: "bg-white", textColor: "text-black", imageUrl: "pic/Dir_2.jpg", cohort: "66기", department: "영문", studentId: "24" }
+        { id: "Dir_1", title: "제130회 대공연 프로그램북", author: "김동건", color: "bg-black", textColor: "text-white", isLeader: true, imageUrl: getImageUrl("Dir_1.jpg"), cohort: "61기", department: "소프트", studentId: "20" },
+        { id: "Dir_2", title: "그게 내가 되지 말란 법은 없잖아", author: "하선영", color: "bg-white", textColor: "text-black", imageUrl: getImageUrl("Dir_2.jpg"), cohort: "66기", department: "영문", studentId: "24" }
       ]
     },
     {
@@ -72,7 +79,7 @@ export const appData: AppData = {
         }
       ],
       books: [
-        { id: "Prod_1", title: "세상에 나쁜 경험은 없다.", author: "김윤형", color: "bg-neutral-800", textColor: "text-white", isLeader: true, imageUrl: "pic/Prod_1.jpg", cohort: "65기", department: "전전", studentId: "24" }
+        { id: "Prod_1", title: "세상에 나쁜 경험은 없다.", author: "김윤형", color: "bg-neutral-800", textColor: "text-white", isLeader: true, imageUrl: getImageUrl("Prod_1.jpg"), cohort: "65기", department: "전전", studentId: "24" }
       ]
     },
     {
@@ -81,11 +88,11 @@ export const appData: AppData = {
       categoryKorean: "기획",
       defaultIcon: "briefcase",
       books: [
-        { id: "Prod_2", title: "김민서짱", author: "김민서", color: "bg-neutral-100", textColor: "text-black", imageUrl: "pic/Prod_2.jpg", cohort: "65기", department: "미술", studentId: "24" },
-        { id: "Prod_3", title: "누가 내 머리에 똥쌌을까", author: "엄현식", color: "bg-neutral-300", textColor: "text-black", imageUrl: "pic/Prod_3.jpg", cohort: "62기", department: "신소재", studentId: "21" },
-        { id: "Prod_4", title: "쓸모없는 지식사전", author: "이수빈", color: "bg-white", textColor: "text-black", imageUrl: "pic/Prod_4.jpg", cohort: "66기", department: "글경", studentId: "24" },
-        { id: "Prod_5", title: "흔들림의 미학", author: "지서현", color: "bg-neutral-900", textColor: "text-white", imageUrl: "pic/Prod_5.jpg", cohort: "66기", department: "글경", studentId: "24" },
-        { id: "Prod_6", title: "때수건에 대하여", author: "최유은", color: "bg-neutral-200", textColor: "text-black", imageUrl: "pic/Prod_6.jpg", cohort: "66기", department: "건환공", studentId: "25" }
+        { id: "Prod_2", title: "김민서짱", author: "김민서", color: "bg-neutral-100", textColor: "text-black", imageUrl: getImageUrl("Prod_2.jpg"), cohort: "65기", department: "미술", studentId: "24" },
+        { id: "Prod_3", title: "누가 내 머리에 똥쌌을까", author: "엄현식", color: "bg-neutral-300", textColor: "text-black", imageUrl: getImageUrl("Prod_3.jpg"), cohort: "62기", department: "신소재", studentId: "21" },
+        { id: "Prod_4", title: "쓸모없는 지식사전", author: "이수빈", color: "bg-white", textColor: "text-black", imageUrl: getImageUrl("Prod_4.jpg"), cohort: "66기", department: "글경", studentId: "24" },
+        { id: "Prod_5", title: "흔들림의 미학", author: "지서현", color: "bg-neutral-900", textColor: "text-white", imageUrl: getImageUrl("Prod_5.jpg"), cohort: "66기", department: "글경", studentId: "24" },
+        { id: "Prod_6", title: "때수건에 대하여", author: "최유은", color: "bg-neutral-200", textColor: "text-black", imageUrl: getImageUrl("Prod_6.jpg"), cohort: "66기", department: "건환공", studentId: "25" }
       ]
     },
     {
@@ -94,14 +101,14 @@ export const appData: AppData = {
       categoryKorean: "무대",
       defaultIcon: "hammer",
       books: [
-        { id: "Stage_1", title: "나의 사랑하는 책 비록 헤어졌으나", author: "김예나", color: "bg-black", textColor: "text-white", isLeader: true, imageUrl: "pic/Stage_1.jpg", cohort: "66기", department: "건축", studentId: "24" },
-        { id: "Stage_2", title: "내일은 스트레스 안 받을 거야", author: "김기현", color: "bg-white", textColor: "text-black", imageUrl: "pic/Stage_2.jpg", cohort: "66기", department: "한문", studentId: "24" },
-        { id: "Stage_3", title: "줴줴이야", author: "김효성", color: "bg-neutral-400", textColor: "text-black", imageUrl: "pic/Stage_3.jpg", cohort: "64기", department: "경영", studentId: "23" },
-        { id: "Stage_4", title: "2026년 전의 너로부터", author: "박영재", color: "bg-neutral-800", textColor: "text-white", imageUrl: "pic/Stage_4.jpg", cohort: "66기", department: "생과", studentId: "25" },
-        { id: "Stage_5", title: "도토리삼형제", author: "박자연", color: "bg-neutral-100", textColor: "text-black", imageUrl: "pic/Stage_5.jpg", cohort: "66기", department: "인융", studentId: "25" },
-        { id: "Stage_6", title: "낡은이의 하루 철학", author: "이지원", color: "bg-neutral-900", textColor: "text-white", imageUrl: "pic/Stage_6.jpg", cohort: "66기", department: "글바메", studentId: "25" },
-        { id: "Stage_7", title: "잠 잘 오게 이불 덮는 99가지 방법", author: "조아정", color: "bg-white", textColor: "text-black", imageUrl: "pic/Stage_7.jpg", cohort: "65기", department: "지솦", studentId: "24" },
-        { id: "Stage_8", title: "자고싶다", author: "차민규", color: "bg-neutral-600", textColor: "text-white", imageUrl: "pic/Stage_8.jpg", cohort: "65기", department: "경제", studentId: "24" }
+        { id: "Stage_1", title: "나의 사랑하는 책 비록 헤어졌으나", author: "김예나", color: "bg-black", textColor: "text-white", isLeader: true, imageUrl: getImageUrl("Stage_1.jpg"), cohort: "66기", department: "건축", studentId: "24" },
+        { id: "Stage_2", title: "내일은 스트레스 안 받을 거야", author: "김기현", color: "bg-white", textColor: "text-black", imageUrl: getImageUrl("Stage_2.jpg"), cohort: "66기", department: "한문", studentId: "24" },
+        { id: "Stage_3", title: "줴줴이야", author: "김효성", color: "bg-neutral-400", textColor: "text-black", imageUrl: getImageUrl("Stage_3.jpg"), cohort: "64기", department: "경영", studentId: "23" },
+        { id: "Stage_4", title: "2026년 전의 너로부터", author: "박영재", color: "bg-neutral-800", textColor: "text-white", imageUrl: getImageUrl("Stage_4.jpg"), cohort: "66기", department: "생과", studentId: "25" },
+        { id: "Stage_5", title: "도토리삼형제", author: "박자연", color: "bg-neutral-100", textColor: "text-black", imageUrl: getImageUrl("Stage_5.jpg"), cohort: "66기", department: "인융", studentId: "25" },
+        { id: "Stage_6", title: "낡은이의 하루 철학", author: "이지원", color: "bg-neutral-900", textColor: "text-white", imageUrl: getImageUrl("Stage_6.jpg"), cohort: "66기", department: "글바메", studentId: "25" },
+        { id: "Stage_7", title: "잠 잘 오게 이불 덮는 99가지 방법", author: "조아정", color: "bg-white", textColor: "text-black", imageUrl: getImageUrl("Stage_7.jpg"), cohort: "65기", department: "지솦", studentId: "24" },
+        { id: "Stage_8", title: "자고싶다", author: "차민규", color: "bg-neutral-600", textColor: "text-white", imageUrl: getImageUrl("Stage_8.jpg"), cohort: "65기", department: "경제", studentId: "24" }
       ]
     },
     {
@@ -110,14 +117,14 @@ export const appData: AppData = {
       categoryKorean: "조명",
       defaultIcon: "lightbulb",
       books: [
-        { id: "Light_1", title: "집에 가는 549가지 방법", author: "이재욱", color: "bg-neutral-200", textColor: "text-black", isLeader: true, imageUrl: "pic/Light_1.jpg", cohort: "63기", department: "바메", studentId: "22" },
-        { id: "Light_2", title: "If 그랬더라면", author: "강민성", color: "bg-black", textColor: "text-white", imageUrl: "pic/Light_2.jpg", cohort: "65기", department: "전전", studentId: "21" },
-        { id: "Light_3", title: "행복", author: "권종구", color: "bg-white", textColor: "text-black", imageUrl: "pic/Light_3.jpg", cohort: "66기", department: "영상", studentId: "25" },
-        { id: "Light_4", title: "김나현의 위인전", author: "김나현", color: "bg-neutral-500", textColor: "text-white", imageUrl: "pic/Light_4.jpg", cohort: "66기", department: "화공", studentId: "25" },
-        { id: "Light_5", title: "인간은 왜", author: "김예은", color: "bg-neutral-800", textColor: "text-white", imageUrl: "pic/Light_5.jpg", cohort: "65기", department: "사회", studentId: "24" },
-        { id: "Light_6", title: "맛있게 먹는 방법", author: "이재준", color: "bg-neutral-100", textColor: "text-black", imageUrl: "pic/Light_6.jpg", cohort: "66기", department: "전전", studentId: "25" },
-        { id: "Light_7", title: "이채원", author: "이채원", color: "bg-white", textColor: "text-black", imageUrl: "pic/Light_7.jpg", cohort: "66기", department: "국문", studentId: "25" },
-        { id: "Light_8", title: "줏대 있게 살아가는 법", author: "임지수", color: "bg-black", textColor: "text-white", imageUrl: "pic/Light_8.jpg", cohort: "66기", department: "영상", studentId: "25" }
+        { id: "Light_1", title: "집에 가는 549가지 방법", author: "이재욱", color: "bg-neutral-200", textColor: "text-black", isLeader: true, imageUrl: getImageUrl("Light_1.jpg"), cohort: "63기", department: "바메", studentId: "22" },
+        { id: "Light_2", title: "If 그랬더라면", author: "강민성", color: "bg-black", textColor: "text-white", imageUrl: getImageUrl("Light_2.jpg"), cohort: "65기", department: "전전", studentId: "21" },
+        { id: "Light_3", title: "행복", author: "권종구", color: "bg-white", textColor: "text-black", imageUrl: getImageUrl("Light_3.jpg"), cohort: "66기", department: "영상", studentId: "25" },
+        { id: "Light_4", title: "김나현의 위인전", author: "김나현", color: "bg-neutral-500", textColor: "text-white", imageUrl: getImageUrl("Light_4.jpg"), cohort: "66기", department: "화공", studentId: "25" },
+        { id: "Light_5", title: "인간은 왜", author: "김예은", color: "bg-neutral-800", textColor: "text-white", imageUrl: getImageUrl("Light_5.jpg"), cohort: "65기", department: "사회", studentId: "24" },
+        { id: "Light_6", title: "맛있게 먹는 방법", author: "이재준", color: "bg-neutral-100", textColor: "text-black", imageUrl: getImageUrl("Light_6.jpg"), cohort: "66기", department: "전전", studentId: "25" },
+        { id: "Light_7", title: "이채원", author: "이채원", color: "bg-white", textColor: "text-black", imageUrl: getImageUrl("Light_7.jpg"), cohort: "66기", department: "국문", studentId: "25" },
+        { id: "Light_8", title: "줏대 있게 살아가는 법", author: "임지수", color: "bg-black", textColor: "text-white", imageUrl: getImageUrl("Light_8.jpg"), cohort: "66기", department: "영상", studentId: "25" }
       ]
     },
     {
@@ -126,13 +133,13 @@ export const appData: AppData = {
       categoryKorean: "음향",
       defaultIcon: "music",
       books: [
-        { id: "Sound_1", title: "처음처럼", author: "정우혁", color: "bg-neutral-300", textColor: "text-black", isLeader: true, imageUrl: "pic/Sound_1.jpg", cohort: "66기", department: "시경", studentId: "25" },
-        { id: "Sound_2", title: "인생은 웍질", author: "김경원", color: "bg-neutral-900", textColor: "text-white", imageUrl: "pic/Sound_2.jpg", cohort: "66기", department: "양정공", studentId: "25" },
-        { id: "Sound_3", title: "현대인이 고양이를 키워야하는 이유", author: "이수민", color: "bg-white", textColor: "text-black", imageUrl: "pic/Sound_3.jpg", cohort: "66기", department: "전전", studentId: "25" },
-        { id: "Sound_4", title: "두산은 어떻게 강팀이 되었는가,", author: "이승주", color: "bg-neutral-700", textColor: "text-white", imageUrl: "pic/Sound_4.jpg", cohort: "66기", department: "사학", studentId: "24" },
-        { id: "Sound_5", title: "목포 촌놈의 서울상경기", author: "정세현", color: "bg-neutral-100", textColor: "text-black", imageUrl: "pic/Sound_5.jpg", cohort: "65기", department: "심리", studentId: "24" },
-        { id: "Sound_6", title: "백지 도화지 위 너라는 낭만", author: "조준범", color: "bg-black", textColor: "text-white", imageUrl: "pic/Sound_6.jpg", cohort: "65기", department: "인융", studentId: "22" },
-        { id: "Sound_7", title: "몰라 네가 정해봐... ㅠㅠ", author: "최아야", color: "bg-neutral-400", textColor: "text-black", imageUrl: "pic/Sound_7.jpg", cohort: "64기", department: "의학", studentId: "23" }
+        { id: "Sound_1", title: "처음처럼", author: "정우혁", color: "bg-neutral-300", textColor: "text-black", isLeader: true, imageUrl: getImageUrl("Sound_1.jpg"), cohort: "66기", department: "시경", studentId: "25" },
+        { id: "Sound_2", title: "인생은 웍질", author: "김경원", color: "bg-neutral-900", textColor: "text-white", imageUrl: getImageUrl("Sound_2.jpg"), cohort: "66기", department: "양정공", studentId: "25" },
+        { id: "Sound_3", title: "현대인이 고양이를 키워야하는 이유", author: "이수민", color: "bg-white", textColor: "text-black", imageUrl: getImageUrl("Sound_3.jpg"), cohort: "66기", department: "전전", studentId: "25" },
+        { id: "Sound_4", title: "두산은 어떻게 강팀이 되었는가,", author: "이승주", color: "bg-neutral-700", textColor: "text-white", imageUrl: getImageUrl("Sound_4.jpg"), cohort: "66기", department: "사학", studentId: "24" },
+        { id: "Sound_5", title: "목포 촌놈의 서울상경기", author: "정세현", color: "bg-neutral-100", textColor: "text-black", imageUrl: getImageUrl("Sound_5.jpg"), cohort: "65기", department: "심리", studentId: "24" },
+        { id: "Sound_6", title: "백지 도화지 위 너라는 낭만", author: "조준범", color: "bg-black", textColor: "text-white", imageUrl: getImageUrl("Sound_6.jpg"), cohort: "65기", department: "인융", studentId: "22" },
+        { id: "Sound_7", title: "몰라 네가 정해봐... ㅠㅠ", author: "최아야", color: "bg-neutral-400", textColor: "text-black", imageUrl: getImageUrl("Sound_7.jpg"), cohort: "64기", department: "의학", studentId: "23" }
       ]
     },
     {
@@ -141,11 +148,11 @@ export const appData: AppData = {
       categoryKorean: "의상∙소품∙분장",
       defaultIcon: "scissors",
       books: [
-        { id: "Costume_1", title: "노력 없이 부자 되는법", author: "정새연", color: "bg-white", textColor: "text-black", isLeader: true, imageUrl: "pic/Costume_1.jpg", cohort: "65기", department: "경제", studentId: "24" },
-        { id: "Costume_2", title: "진리의 힘은 거짓보다 강하다", author: "김명옥", color: "bg-neutral-900", textColor: "text-white", imageUrl: "pic/Costume_2.jpg", cohort: "65기", department: "미컴", studentId: "24" },
-        { id: "Costume_3", title: "이 책을 펴면 미래로 감", author: "김유경", color: "bg-neutral-200", textColor: "text-black", imageUrl: "pic/Costume_3.jpg", cohort: "64기", department: "행정", studentId: "23" },
-        { id: "Costume_4", title: "널 사랑할 수밖에 없는 이유.", author: "이은교", color: "bg-black", textColor: "text-white", imageUrl: "pic/Costume_4.jpg", cohort: "66기", department: "무용", studentId: "24" },
-        { id: "Costume_5", title: "피할 수 없을때 즐기는 법 24가지", author: "조윤영", color: "bg-white", textColor: "text-black", imageUrl: "pic/Costume_5.jpg", cohort: "66기", department: "생과", studentId: "25" }
+        { id: "Costume_1", title: "노력 없이 부자 되는법", author: "정새연", color: "bg-white", textColor: "text-black", isLeader: true, imageUrl: getImageUrl("Costume_1.jpg"), cohort: "65기", department: "경제", studentId: "24" },
+        { id: "Costume_2", title: "진리의 힘은 거짓보다 강하다", author: "김명옥", color: "bg-neutral-900", textColor: "text-white", imageUrl: getImageUrl("Costume_2.jpg"), cohort: "65기", department: "미컴", studentId: "24" },
+        { id: "Costume_3", title: "이 책을 펴면 미래로 감", author: "김유경", color: "bg-neutral-200", textColor: "text-black", imageUrl: getImageUrl("Costume_3.jpg"), cohort: "64기", department: "행정", studentId: "23" },
+        { id: "Costume_4", title: "널 사랑할 수밖에 없는 이유.", author: "이은교", color: "bg-black", textColor: "text-white", imageUrl: getImageUrl("Costume_4.jpg"), cohort: "66기", department: "무용", studentId: "24" },
+        { id: "Costume_5", title: "피할 수 없을때 즐기는 법 24가지", author: "조윤영", color: "bg-white", textColor: "text-black", imageUrl: getImageUrl("Costume_5.jpg"), cohort: "66기", department: "생과", studentId: "25" }
       ]
     },
     {
@@ -153,13 +160,13 @@ export const appData: AppData = {
       categoryEnglish: "CAST",
       categoryKorean: "캐스트",
       books: [
-        { id: "Cast_1", title: "스물한 살의 나에게", author: "정준원", color: "bg-black", textColor: "text-white", imageUrl: "pic/Char_1.jpg", cohort: "61기", department: "영상", studentId: "20" },
-        { id: "Cast_2", title: "말미잘에서 살아남기", author: "김희원", color: "bg-white", textColor: "text-black", imageUrl: "pic/Char_2.jpg", cohort: "66기", department: "경제", studentId: "24" },
-        { id: "Cast_3", title: "과잉 생각 방지 안내서 - 번뇌 탈출", author: "진태훈", color: "bg-neutral-800", textColor: "text-white", imageUrl: "pic/Char_3.jpg", cohort: "66기", department: "경영", studentId: "21" },
-        { id: "Cast_4", title: "그럼에도 불구하고, ( )", author: "권민재", color: "bg-neutral-100", textColor: "text-black", imageUrl: "pic/Char_4.jpg", cohort: "66기", department: "미컴", studentId: "25" },
-        { id: "Cast_5", title: "집", author: "윤호준", color: "bg-neutral-300", textColor: "text-black", imageUrl: "pic/Char_5.jpg", cohort: "66기", department: "글경", studentId: "22" },
-        { id: "Cast_6", title: "어쩌다 이렇게 됐지", author: "김성겸", color: "bg-neutral-900", textColor: "text-white", imageUrl: "pic/Char_6.jpg", cohort: "65기", department: "신소재", studentId: "23" },
-        { id: "Cast_7", title: "탈각", author: "이사라", color: "bg-neutral-500", textColor: "text-white", imageUrl: "pic/Char_7.jpg", cohort: "66기", department: "미컴", studentId: "25" },
+        { id: "Cast_1", title: "스물한 살의 나에게", author: "정준원", color: "bg-black", textColor: "text-white", imageUrl: getImageUrl("Char_1.jpg"), cohort: "61기", department: "영상", studentId: "20" },
+        { id: "Cast_2", title: "말미잘에서 살아남기", author: "김희원", color: "bg-white", textColor: "text-black", imageUrl: getImageUrl("Char_2.jpg"), cohort: "66기", department: "경제", studentId: "24" },
+        { id: "Cast_3", title: "과잉 생각 방지 안내서 - 번뇌 탈출", author: "진태훈", color: "bg-neutral-800", textColor: "text-white", imageUrl: getImageUrl("Char_3.jpg"), cohort: "66기", department: "경영", studentId: "21" },
+        { id: "Cast_4", title: "그럼에도 불구하고, ( )", author: "권민재", color: "bg-neutral-100", textColor: "text-black", imageUrl: getImageUrl("Char_4.jpg"), cohort: "66기", department: "미컴", studentId: "25" },
+        { id: "Cast_5", title: "집", author: "윤호준", color: "bg-neutral-300", textColor: "text-black", imageUrl: getImageUrl("Char_5.jpg"), cohort: "66기", department: "글경", studentId: "22" },
+        { id: "Cast_6", title: "어쩌다 이렇게 됐지", author: "김성겸", color: "bg-neutral-900", textColor: "text-white", imageUrl: getImageUrl("Char_6.jpg"), cohort: "65기", department: "신소재", studentId: "23" },
+        { id: "Cast_7", title: "탈각", author: "이사라", color: "bg-neutral-500", textColor: "text-white", imageUrl: getImageUrl("Char_7.jpg"), cohort: "66기", department: "미컴", studentId: "25" },
       ]
     }
   ]
